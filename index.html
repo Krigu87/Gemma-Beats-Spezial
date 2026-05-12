@@ -80,11 +80,11 @@
             transition: all 0.3s ease;
         }
 
-        /* Ingame-Position: Nach oben geschoben, fast unter den Lebensbalken */
+        /* Ingame-Position: Nach UNTEN geschoben, damit er nicht mehr über/im Lebensbalken ist */
         #top-right-controls.ingame-active {
             top: auto !important;
             right: auto !important;
-            bottom: 320px !important; /* Höher gesetzt, Richtung Bildschirmmitte/Lebensbalken-Ende */
+            bottom: 240px !important; /* Tiefer gesetzt als zuvor (320px) */
             left: 2px !important; 
         }
 
