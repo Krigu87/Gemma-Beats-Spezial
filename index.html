@@ -80,11 +80,11 @@
             transition: all 0.3s ease;
         }
 
-        /* Korrektur: Ingame-Position wieder unten links am Rand, kleiner und weiter außen */
+        /* Ingame-Position: Nach oben geschoben, fast unter den Lebensbalken */
         #top-right-controls.ingame-active {
             top: auto !important;
             right: auto !important;
-            bottom: 200px !important;
+            bottom: 320px !important; /* Höher gesetzt, Richtung Bildschirmmitte/Lebensbalken-Ende */
             left: 2px !important; 
         }
 
@@ -98,9 +98,9 @@
         }
         
         #top-right-controls.ingame-active .icon-btn {
-            width: 32px; /* Etwas kleiner */
+            width: 32px; 
             height: 32px;
-            opacity: 0.35; /* Dezentere Optik */
+            opacity: 0.35; 
             background: rgba(255,255,255,0.05);
         }
 
@@ -676,7 +676,6 @@
     const topControls = document.getElementById('top-right-controls');
     const menuBtn = document.getElementById('menu-btn');
 
-    // Icons als SVG-Strings, damit sie nicht als gelbe Emojis gerendert werden
     const ICON_GEAR = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>`;
     const ICON_PAUSE = `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>`;
 
@@ -1531,7 +1530,7 @@
         "Steh auf den Zehenspitzen 🩰", "Beiß die Zähne zusammen & grinse breit 😁", "Planking! Auf die Unterarme gestützt spielen 🧱",
         "Spiele in der Hocke (Ski-Fahrer) ⛷️", "Singe oder summe das Lied laut mit 🎤", "Kuscheltier zwischen die Knie klemmen 🧸",
         "Balanciere ein Buch auf dem Kopf 📚", "Wandsitzen! Lehn dich an die Wall 🪑", "Nur Zeigefinger nutzen (Handy auf Tisch) ☝️",
-        "Steh mit überkreuzten Beinen da 🥨", "Ein Auge mit der Hand zuhalten 🏴‍☠️", "Wiege deinen Oberkörper von links nach rechts ⏳",
+        "Steh mit überkreuzten Beinen da 🥨", "Ein Auge mit der Hand zuhalten 🏴‍ Scotch", "Wiege deinen Oberkörper von links nach rechts ⏳",
         "Drehe deinen Oberkörper abwechselnd links/rechts 🔄", "Kreise mit einem freien Arm 🎡",
         "Ständiges Wippen auf den Zehenspitzen 🆙", "Sitz-Fahrrad: Beine in die Luft & radeln 🚲", "Ellbogen auf Schulterhöhe nach außen halten 💪",
         "Freien Arm kerzengerade zur Seite strecken 🧭", "Pinguin-Style: Arme fest an Rippen & watscheln 🐧", "Kreise mit einem Knie in der Luft 🌀",
