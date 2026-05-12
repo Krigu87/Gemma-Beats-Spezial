@@ -80,11 +80,11 @@
             transition: all 0.3s ease;
         }
 
-        /* Ingame-Position: Nach UNTEN geschoben, damit er nicht mehr über/im Lebensbalken ist */
+        /* Ingame-Position: Ein kleines Stück höher (285px) für bessere Erreichbarkeit ohne Overlap */
         #top-right-controls.ingame-active {
             top: auto !important;
             right: auto !important;
-            bottom: 240px !important; /* Tiefer gesetzt als zuvor (320px) */
+            bottom: 285px !important; 
             left: 2px !important; 
         }
 
@@ -1577,11 +1577,11 @@
     
     document.getElementById('accept-challenge-btn').onclick = closeChallengePopup;
 
-    // PWA Service Worker
+    // PWA Service Worker - Name auf v5 erhöht
     if ('serviceWorker' in navigator) {
         const swCode = `
             self.addEventListener('install', e => {
-                e.waitUntil(caches.open('gemma-beats-v2').then(c => c.addAll([location.href])));
+                e.waitUntil(caches.open('gemma-beats-v5').then(c => c.addAll([location.href])));
             });
             self.addEventListener('fetch', e => {
                 e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
