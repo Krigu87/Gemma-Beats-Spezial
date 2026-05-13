@@ -127,16 +127,13 @@
             filter: drop-shadow(0 0 10px currentColor);
         }
 
-        /* --- Logo Styles: Sanftes Atmen & Farbwechsel-Glow --- */
         #main-logo {
             width: 260px;
             height: 260px;
             margin-bottom: 15px;
             object-fit: cover;
-            /* Maske für Verschmelzung beibehalten */
             -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%);
             mask-image: radial-gradient(circle, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%);
-            /* Zwei Animationen: Einmal sanftes Atmen, einmal der Farbwechsel-Glow */
             animation: logoBreath 4s infinite alternate ease-in-out, neonGlow 10s infinite linear;
             z-index: 51;
         }
@@ -430,7 +427,6 @@
         #app-exit-screen h1 { color: #fff; text-shadow: none; animation: none; background: none; -webkit-text-fill-color: #fff; margin-bottom: 20px; }
         #app-exit-screen p { color: #888; font-size: 1rem; margin-bottom: 30px; text-align: center; }
 
-        /* --- CHALLENGE CSS --- */
         #challenge-popup { position: absolute; width: 80%; max-width: 320px; background: rgba(15, 15, 25, 0.98); border: 2px solid #ffaa00; border-radius: 15px; padding: 15px; display: flex; flex-direction: column; align-items: center; z-index: 100; box-shadow: 0 0 30px rgba(0,0,0,0.8); animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .slot-machine-mini { width: 100%; background: #000; border-radius: 8px; margin: 10px 0; padding: 12px; min-height: 60px; display: flex; align-items: center; justify-content: center; border: 1px solid #333; overflow: hidden; }
         #slot-text-mini { color: #ffaa00; font-size: 0.95rem; font-weight: bold; text-align: center; text-transform: uppercase; }
@@ -480,7 +476,6 @@
         </div>
     </div>
 
-    <!-- START SCREEN -->
     <div id="start-screen" class="menu-overlay">
         <div class="watermark-notes">
             <span style="top: 15%; left: 10%; color: #ff00cc; transform: rotate(-20deg);">🎵</span>
@@ -489,7 +484,6 @@
             <span style="top: 25%; left: 80%; color: #ffaa00; transform: rotate(25deg);">🎶</span>
         </div>
         
-        <!-- Das Logo mit neuem Farbwechsel-Glow -->
         <img id="main-logo" src="icon.png" alt="Gemma Beats Logo">
 
         <input type="text" id="player-name" placeholder="Dein Name" maxlength="12">
@@ -512,7 +506,6 @@
         <button id="start-btn" disabled>PLAY</button>
     </div>
 
-    <!-- SAVED SONGS SCREEN -->
     <div id="saved-songs-screen" class="menu-overlay hidden">
         <h2>Deine Songs</h2>
         <input type="text" id="song-search-input" placeholder="Song suchen...">
@@ -520,7 +513,6 @@
         <button id="close-saved-songs-btn" style="background: #555;">Zurück</button>
     </div>
 
-    <!-- SETTINGS SCREEN -->
     <div id="main-settings-screen" class="menu-overlay hidden">
         <div class="watermark-notes">
             <span style="top: 20%; left: 80%; color: #ff00cc; transform: rotate(10deg);">🎵</span>
@@ -538,7 +530,6 @@
         <button onclick="closeMainSettings()" style="margin-top: 10px; background: #555;">Zurück</button>
     </div>
 
-    <!-- CHALLENGE POPUP -->
     <div id="challenge-popup" class="hidden">
         <h3 style="color: #ffaa00; margin: 0; font-size: 1.1rem; text-transform: uppercase;">Challenge!</h3>
         <div class="slot-machine-mini">
@@ -549,7 +540,6 @@
         <button onclick="closeChallengePopup()" style="background: transparent; border: 1px solid #555; color: #888; font-size: 0.8rem; margin-top: 5px; width: auto; padding: 4px 12px;">ABBRECHEN</button>
     </div>
 
-    <!-- HELP SCREEN -->
     <div id="help-screen" class="menu-overlay hidden">
         <h2>So geht's!</h2>
         <div class="help-text">
@@ -565,17 +555,18 @@
             <p>Triffst du <strong>20 Noten fehlerfrei</strong> hintereinander, erhältst du ein Leben im Balken zurück.</p>
 
             <h3>⭐ Sterne-Bewertung</h3>
-            <p>Am Ende wird abgerechnet (nur echte verpasste Noten zählen, ohne Leerklicks):<br>
-            <strong style="color: #ffd700; text-shadow: 0 0 5px #ffaa00;">🌟 5 Sterne:</strong> 0 Fehler & <span class="white-bold">100% perfekt getroffen</span> (Absolute Perfektion)<br>
-            <strong>5 Sterne:</strong> 0 Fehler (Episch gespielt)<br>
-            <strong>4 - 4.5 Sterne:</strong> 1-3 Fehler (Du rockst)<br>
-            <strong>3 - 3.5 Sterne:</strong> 4-6 Fehler (Sehr gut gespielt)<br>
-            <strong>2 - 2.5 Sterne:</strong> 7-9 Fehler (Gut gespielt)<br>
-            <strong>Unter 2:</strong> Weiter üben!</p>
+            <p>Am Ende wird abgerechnet (nur echte verpasste Noten zählen, ohne Leerklicks):<br><br>
+            <strong style="color: #00ff55;">Absolute Perfektion:</strong> <span style="color: #ffd700; text-shadow: 0 0 5px #ffaa00;">🌟</span> 5.0 (0 Fehler & 90-100% perfekt getroffen)<br><br>
+            <strong style="color: #00ff55;">Episch gespielt:</strong> ⭐ 5.0 (0 Fehler)<br><br>
+            <strong style="color: #00ff55;">Du rockst:</strong> ⭐ 4.0 - 4.5 (1 - 5 Fehler)<br><br>
+            <strong style="color: #00ff55;">Sehr gut gespielt:</strong> ⭐ 3.0 - 3.5 (6 - 10 Fehler)<br><br>
+            <strong style="color: #00ff55;">Gut gespielt:</strong> ⭐ 2.0 - 2.5 (11 - 15 Fehler)<br><br>
+            <strong style="color: #00ff55;">Weiter üben!:</strong> ⭐ 1.0 - 1.5 (16 - 20 Fehler)</p>
 
             <h3>🚥 Schwierigkeit</h3>
-            <p><strong>Leicht:</strong> Nimmt nur die markantesten Bässe.
-            <strong>Mittel:</strong> Normaler Takt. <br><strong>Schwer:</strong> Reagiert auf feinere Beats. Die Noten fallen exakt gleich schnell wie auf Leicht, aber es kommen deutlich mehr Noten in kürzeren Abständen!</p>
+            <p><strong>Leicht:</strong> Nimmt nur die markantesten Bässe.<br><br>
+            <strong>Mittel:</strong> Normaler Takt.<br><br>
+            <strong>Schwer:</strong> Reagiert auf feinere Beats. Die Noten fallen exakt gleich schnell wie auf Leicht, aber es kommen deutlich mehr Noten in kürzeren Abständen!</p>
 
             <h3>🎰 Challenge Modus</h3>
             <p>Zieh im Einstellungsmenü am Hebel, um eine zufällige Aufgabe zu erhalten (z.B. auf einem Bein spielen oder das Handy kopfüber halten).</p>
@@ -594,7 +585,6 @@
         <button id="help-back-btn" style="background: #555;">Alles klar!</button>
     </div>
 
-    <!-- PAUSE SCREEN -->
     <div id="pause-screen" class="menu-overlay hidden">
         <h1>Pausiert</h1>
         <button id="resume-btn">Weiter</button>
@@ -603,7 +593,6 @@
         <button id="pause-exit-btn" style="background: #ff3333;">Beenden</button>
     </div>
 
-    <!-- HIGHSCORE SCREEN -->
     <div id="highscore-screen" class="menu-overlay hidden">
         <h2 class="gold-pulse-title">Highscores</h2>
         <input type="text" id="hs-search-input" placeholder="Nach Song suchen...">
@@ -611,7 +600,6 @@
         <button id="hs-back-btn" style="background: #555;">Zurück</button>
     </div>
 
-    <!-- GAME OVER SCREEN -->
     <div id="game-over-screen" class="menu-overlay hidden">
         <h1 id="game-over-title"></h1>
         <div id="game-over-content" style="text-align: center; display: flex; flex-direction: column; align-items: center; width: 100%;">
@@ -627,7 +615,6 @@
         </div>
     </div>
 
-    <!-- CONFIRM DELETE SCREEN -->
     <div id="confirm-delete-screen" class="menu-overlay hidden" style="z-index: 60; background: rgba(0,0,0,0.85);">
         <div class="popup-box">
             <h2 style="font-size: 1.5rem; margin-bottom: 20px; color: #fff; text-shadow: none;">Willst du den Song wirklich löschen?</h2>
@@ -638,7 +625,6 @@
         </div>
     </div>
 
-    <!-- APP EXIT SCREEN -->
     <div id="app-exit-screen" class="menu-overlay hidden">
         <h1>Tschüss!</h1>
         <p>Du kannst diesen Tab jetzt schließen.</p>
@@ -684,6 +670,7 @@
     let score = 0, combo = 0, maxCombo = 0, multiplier = 1, misses = 0, totalMisses = 0, spawnedNotes = 0;
     let perfects = 0, greats = 0, oks = 0;
     let notes = [], floatingTexts = [], confetti = [], flames = [], fireworks = [], pulsingStars = [], beatmap = [];
+    let laneGlowTimers = [0, 0, 0, 0];
     let audioCtx, audioEle, delayNode, audioFileUrl, currentSongName = "";
     const LANES = 4, COLORS = ['#ff00cc', '#00eeff', '#00ff55', '#ffaa00'];
     let lastTime = 0, hitZoneY = 0, noteSpeed = 0, trackWidth = 0, trackMargin = 20, boardOpacity = 1.0, targetBoardOpacity = 1.0;
@@ -834,7 +821,9 @@
     function resize() {
         const container = document.getElementById('game-container');
         canvas.width = container.clientWidth; canvas.height = container.clientHeight;
-        hitZoneY = canvas.height - 80; noteSpeed = (hitZoneY + 50) / 1.5;
+        // Hitbox und Kästchen um weitere 10 Pixel nach oben verschoben: 145px statt 135px vom unteren Rand
+        hitZoneY = canvas.height - 145; 
+        noteSpeed = (hitZoneY + 50) / 1.5;
         trackMargin = 20; trackWidth = canvas.width - (trackMargin * 2);
     }
     window.addEventListener('resize', resize);
@@ -909,6 +898,7 @@
         isPaused = false; audioEnded = false;
         notes = []; confetti = []; flames = []; fireworks = [];
         pulsingStars = []; floatingTexts = [];
+        laneGlowTimers = [0, 0, 0, 0];
         activeEffects = { flames: false, pulsing: false, fireworks: false, fireworksTimer: 0, confettiTimer: 0, confettiGold: false };
         goLasers.classList.add('hidden');
         damageFlashTimer = 0;
@@ -1214,13 +1204,14 @@
         let totalNotesInSong = Math.max(1, beatmap.length);
         let percent = Math.round(weighted / totalNotesInSong);
         
-        let missingNotes = beatmap.length - totalHits;
-        let totalErrors = missingNotes;
+        let totalErrors = beatmap.length - totalHits;
         let isFullCombo = (totalErrors === 0 && beatmap.length > 0);
-        let allPerfect = (isFullCombo && perfects === beatmap.length);
+        let allPerfect = (isFullCombo && beatmap.length > 0 && percent >= 90);
+        
         activeEffects = { flames: false, pulsing: false, fireworks: false, fireworksTimer: 0, confettiTimer: 0, confettiGold: false };
         goLasers.classList.add('hidden');
         pulsingStars = [];
+        
         if (!win || misses >= 10) {
             titleEl.innerText = "GAME OVER";
             titleEl.style.background = "none"; titleEl.style.webkitTextFillColor = "#ff3333"; titleEl.classList.add('anim-grow');
@@ -1240,19 +1231,19 @@
                 activeEffects.fireworks = true; 
                 activeEffects.fireworksTimer = 3.0;
             }
-            else if (totalErrors <= 3) { 
+            else if (totalErrors <= 5) { 
                 titleEl.innerText = "DU ROCKST";
                 titleEl.classList.add('anim-win'); 
                 spawnConfetti(100, false); 
                 activeEffects.flames = true; 
             }
-            else if (totalErrors <= 6) { 
+            else if (totalErrors <= 10) { 
                 titleEl.innerText = "SEHR GUT GESPIELT";
                 titleEl.classList.add('anim-win'); 
                 spawnConfetti(40, false); 
                 activeEffects.confettiTimer = 3.0; activeEffects.confettiGold = false; 
             }
-            else if (totalErrors <= 9) { 
+            else if (totalErrors <= 15) { 
                 titleEl.innerText = "GUT GESPIELT";
                 titleEl.classList.add('anim-win'); 
                 activeEffects.pulsing = true;
@@ -1274,7 +1265,7 @@
         }
 
         document.getElementById('hit-ratio-display').innerText = `${totalHits} von ${beatmap.length} Noten getroffen`;
-        document.getElementById('accuracy-display').innerText = `Präzision: ${percent}%`;
+        document.getElementById('accuracy-display').innerText = `Davon perfekt: ${percent}%`;
         document.getElementById('max-combo-display').innerText = `Längste Serie: ${maxCombo}x`;
         
         let hss = JSON.parse(localStorage.getItem('gemma_highscores') || "{}");
@@ -1284,8 +1275,34 @@
 
         document.getElementById('final-score').innerText = `Punkte: ${score}`;
         
-        let stars = Math.max(0, 5 - (totalErrors * 0.5));
+        // Neues Sterne-Berechnungssystem exakt nach Tabelle
+        let stars = 0;
         let starHtml = "";
+        
+        if (win) {
+            if (totalErrors === 0) {
+                stars = 5.0;
+            } else if (totalErrors <= 2) {
+                stars = 4.5;
+            } else if (totalErrors <= 5) {
+                stars = 4.0;
+            } else if (totalErrors <= 7) {
+                stars = 3.5;
+            } else if (totalErrors <= 10) {
+                stars = 3.0;
+            } else if (totalErrors <= 12) {
+                stars = 2.5;
+            } else if (totalErrors <= 15) {
+                stars = 2.0;
+            } else if (totalErrors <= 17) {
+                stars = 1.5;
+            } else if (totalErrors <= 20) {
+                stars = 1.0;
+            } else {
+                stars = 0.5;
+            }
+        }
+
         for(let i=0; i<5; i++) {
             if(i < Math.floor(stars)) {
                 starHtml += "<span style='color:#ffcc00; text-shadow: 0 0 10px rgba(255,204,0,0.8);'>★</span>";
@@ -1295,6 +1312,7 @@
                 starHtml += "<span style='color:#111; -webkit-text-stroke: 1px #666; text-shadow: none;'>★</span>";
             }
         }
+        
         document.getElementById('star-rating').innerHTML = starHtml;
         contentEl.classList.add('fade-in');
         
@@ -1315,18 +1333,27 @@
         if (boardOpacity > targetBoardOpacity) boardOpacity = Math.max(0, boardOpacity - dt * 1.5);
         
         if (damageFlashTimer > 0) damageFlashTimer -= dt;
+        
+        for(let i=0; i<4; i++) {
+            if(laneGlowTimers[i] > 0) laneGlowTimers[i] -= dt;
+        }
+
         if (isPlaying) {
             let cTime = audioEle.currentTime;
-            beatmap.forEach(b => { if (!b.spawned && b.time <= cTime) { b.spawned = true; notes.push({ lane: b.lane, y: -50 }); spawnedNotes++; }});
+            beatmap.forEach(b => { if (!b.spawned && b.time <= cTime) { b.spawned = true; notes.push({ lane: b.lane, y: -50, safe: false }); spawnedNotes++; }});
             for (let i = notes.length - 1; i >= 0; i--) {
                 notes[i].y += noteSpeed * dt;
                 if (notes[i].y > canvas.height + 50) { 
-                    combo = 0;
-                    multiplier = 1; misses++; totalMisses++; 
+                    if (!notes[i].safe) {
+                        combo = 0;
+                        multiplier = 1; 
+                        misses++; 
+                        totalMisses++; 
+                        damageFlashTimer = 0.2; 
+                        updateUI(); 
+                        if (misses >= 10) triggerGameOver(false);
+                    }
                     notes.splice(i, 1); 
-                    damageFlashTimer = 0.2; 
-                    updateUI(); 
-                    if (misses >= 10) triggerGameOver(false);
                 }
             }
             if (audioEnded && notes.length === 0 && !isGameOver) triggerGameOver(true);
@@ -1391,7 +1418,7 @@
 
         draw(); 
         
-        if(isPlaying || isCountingDown || confetti.length > 0 || flames.length > 0 || fireworks.length > 0 || activeEffects.flames || activeEffects.pulsing || activeEffects.fireworks || activeEffects.confettiTimer > 0 || damageFlashTimer > 0) {
+        if(isPlaying || isCountingDown || confetti.length > 0 || flames.length > 0 || fireworks.length > 0 || activeEffects.flames || activeEffects.pulsing || activeEffects.fireworks || activeEffects.confettiTimer > 0 || damageFlashTimer > 0 || laneGlowTimers.some(t => t > 0)) {
             currentLoopId = requestAnimationFrame(gameLoop);
         }
     }
@@ -1430,9 +1457,19 @@
             for (let i = 0; i < LANES; i++) {
                 ctx.fillStyle = i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'rgba(255,255,255,0.04)';
                 ctx.fillRect(trackMargin + i * lw, 0, lw, canvas.height);
-                ctx.strokeStyle = COLORS[i]; ctx.lineWidth = 4;
+                
+                let x = trackMargin + i * lw + 10;
+                let w = lw - 20;
+                
+                if (laneGlowTimers[i] > 0) {
+                    ctx.fillStyle = 'rgba(255, 255, 255, ' + (laneGlowTimers[i] * 5) + ')';
+                    ctx.fillRect(x, hitZoneY - 20, w, 40);
+                }
+
+                ctx.strokeStyle = COLORS[i];
+                ctx.lineWidth = laneGlowTimers[i] > 0 ? 6 : 4;
                 ctx.globalAlpha = 0.5 * boardOpacity;
-                ctx.strokeRect(trackMargin + i * lw + 10, hitZoneY - 20, lw - 20, 40);
+                ctx.strokeRect(x, hitZoneY - 20, w, 40);
                 ctx.globalAlpha = boardOpacity;
             }
             
@@ -1472,17 +1509,26 @@
 
     function hit(lane) {
         if (!isPlaying || isGameOver || isCountingDown) return;
-        let target = notes.find(n => n.lane === lane && n.y > hitZoneY - 80 && n.y < hitZoneY + 60);
+        
+        // --- AKTUALISIERTE HITBOX: +/- 50 PIXEL ---
+        let target = notes.find(n => n.lane === lane && n.y > hitZoneY - 50 && n.y < hitZoneY + 50);
+        
         if (target) {
+            laneGlowTimers[lane] = 0.15;
             let dist = Math.abs(target.y - hitZoneY);
             let rating = '', rColor = '';
-            if (dist < 40) { score += 100 * multiplier; perfects++; rating = 'PERFEKT!'; rColor = '#fff'; }
-            else if (dist < 75) { score += 50 * multiplier; greats++; rating = 'SEHR GUT!'; rColor = '#00eeff'; }
-            else { score += 10 * multiplier; oks++; rating = 'GUT!'; rColor = '#aaa'; }
+            
+            // --- SCHWELLENWERTE (Perfekt 25, Sehr Gut 35, Gut nun bis 50) ---
+            if (dist < 25) { 
+                score += 100 * multiplier; perfects++; rating = 'PERFEKT!'; rColor = '#fff'; 
+            } else if (dist < 35) { 
+                score += 50 * multiplier; greats++; rating = 'SEHR GUT!'; rColor = '#00eeff'; 
+            } else { 
+                score += 10 * multiplier; oks++; rating = 'GUT!'; rColor = '#aaa'; 
+            }
             
             combo++;
             if (combo > maxCombo) maxCombo = combo;
-            
             if(combo % 10 === 0) multiplier++;
             
             if(combo > 0 && combo % 20 === 0 && misses > 0) {
@@ -1500,8 +1546,16 @@
             notes = notes.filter(n => n !== target);
             updateUI();
         } else {
+            // "TOO EARLY" CHECK: Basierend auf der neuen Hitbox-Grenze (-50)
+            let earlyNote = notes.find(n => n.lane === lane && n.y > hitZoneY - 150 && n.y <= hitZoneY - 50);
+            if (earlyNote) {
+                earlyNote.safe = true;
+            }
+
             combo = 0;
-            multiplier = 1; misses++; totalMisses++; 
+            multiplier = 1; 
+            misses++; 
+            totalMisses++; 
             damageFlashTimer = 0.2; 
             updateUI(); 
             if (misses >= 10) triggerGameOver(false);
@@ -1537,7 +1591,7 @@
         "Steh auf den Zehenspitzen 🩰", "Beiß die Zähne zusammen & grinse breit 😁", "Planking! Auf die Unterarme gestützt spielen 🧱",
         "Spiele in der Hocke (Ski-Fahrer) ⛷️", "Singe oder summe das Lied laut mit 🎤", "Kuscheltier zwischen die Knie klemmen 🧸",
         "Balanciere ein Buch auf dem Kopf 📚", "Wandsitzen! Lehn dich an die Wall 🪑", "Nur Zeigefinger nutzen (Handy auf Tisch) ☝️",
-        "Steh mit überkreuzten Beinen da 🥨", "Ein Auge mit der Hand zuhalten 🏴‍ Scotch", "Wiege deinen Oberkörper von links nach rechts ⏳",
+        "Steh mit überkreuzten Beinen da 🥨", "Ein Auge mit der Hand zuhalten 🏴‍", "Wiege deinen Oberkörper von links nach rechts ⏳",
         "Drehe deinen Oberkörper abwechselnd links/rechts 🔄", "Kreise mit einem freien Arm 🎡",
         "Ständiges Wippen auf den Zehenspitzen 🆙", "Sitz-Fahrrad: Beine in die Luft & radeln 🚲", "Ellbogen auf Schulterhöhe nach außen halten 💪",
         "Freien Arm kerzengerade zur Seite strecken 🧭", "Pinguin-Style: Arme fest an Rippen & watscheln 🐧", "Kreise mit einem Knie in der Luft 🌀",
