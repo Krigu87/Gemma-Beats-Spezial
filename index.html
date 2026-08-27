@@ -492,7 +492,7 @@
         
         <label class="file-upload">
             🎵 Neuen Song laden
-            <input type="file" id="audio-upload" accept="audio/*" style="display:none;">
+            <input type="file" id="audio-upload" accept="audio/*, .mp3, .m4a, .aac, .wav, .ogg, .flac, audio/mpeg, audio/mp4, audio/x-m4a, audio/aac, audio/wav" style="display:none;">
         </label>
         <div id="song-name" style="color:#00eeff; margin:10px 0; font-weight:bold; z-index: 51; text-align: center;">Kein Song ausgewählt</div>
         
@@ -576,11 +576,11 @@
             So bleibt dein Fortschritt erhalten.</p>
 
             <h3>📂 Eigene Songs laden</h3>
-            <p><strong>Android:</strong> Auf "Neuen Song laden" tippen und Song aus dem Dateimanager auswählen.</p>
+            <p><strong>Android:</strong> Auf "Neuen Song laden" tippen und Song aus dem Dateimanager / Musik-Ordner auswählen.</p>
             <p><strong>iPhone / iPad:</strong><br>
-            1. Speicher deine MP3-Datei zuerst lokal in der <span class="white-bold">"Dateien"-App</span>.<br>
+            1. Speicher deinen Song (.mp3, .m4a etc.) in der <span class="white-bold">"Dateien"-App</span> (z.B. unter "Downloads" oder "Auf meinem iPhone").<br>
             2. Tippe hier auf "Neuen Song laden".<br>
-            3. Wähle deine Datei aus der Liste aus.</p>
+            3. Wähle deine Song-Datei einfach aus der Liste aus.</p>
         </div>
         <button id="help-back-btn" style="background: #555;">Alles klar!</button>
     </div>
@@ -821,7 +821,6 @@
     function resize() {
         const container = document.getElementById('game-container');
         canvas.width = container.clientWidth; canvas.height = container.clientHeight;
-        // Hitbox und Kästchen um weitere 10 Pixel nach oben verschoben: 145px statt 135px vom unteren Rand
         hitZoneY = canvas.height - 145; 
         noteSpeed = (hitZoneY + 50) / 1.5;
         trackMargin = 20; trackWidth = canvas.width - (trackMargin * 2);
@@ -1275,7 +1274,6 @@
 
         document.getElementById('final-score').innerText = `Punkte: ${score}`;
         
-        // Neues Sterne-Berechnungssystem exakt nach Tabelle
         let stars = 0;
         let starHtml = "";
         
@@ -1510,7 +1508,6 @@
     function hit(lane) {
         if (!isPlaying || isGameOver || isCountingDown) return;
         
-        // --- AKTUALISIERTE HITBOX: +/- 50 PIXEL ---
         let target = notes.find(n => n.lane === lane && n.y > hitZoneY - 50 && n.y < hitZoneY + 50);
         
         if (target) {
@@ -1518,7 +1515,6 @@
             let dist = Math.abs(target.y - hitZoneY);
             let rating = '', rColor = '';
             
-            // --- SCHWELLENWERTE (Perfekt 25, Sehr Gut 35, Gut nun bis 50) ---
             if (dist < 25) { 
                 score += 100 * multiplier; perfects++; rating = 'PERFEKT!'; rColor = '#fff'; 
             } else if (dist < 35) { 
@@ -1546,7 +1542,6 @@
             notes = notes.filter(n => n !== target);
             updateUI();
         } else {
-            // "TOO EARLY" CHECK: Basierend auf der neuen Hitbox-Grenze (-50)
             let earlyNote = notes.find(n => n.lane === lane && n.y > hitZoneY - 150 && n.y <= hitZoneY - 50);
             if (earlyNote) {
                 earlyNote.safe = true;
@@ -1579,7 +1574,7 @@
         if (!isPlaying || isPaused || isCountingDown) return;
         let x = e.clientX - canvas.getBoundingClientRect().left - trackMargin;
         let y = e.clientY - canvas.getBoundingClientRect().top;
-        if (y > hitZoneY - 150) {
+        if (y > hitZoneY - 150) { 
             let lane = Math.floor(x / (trackWidth/LANES));
             if (lane >= 0 && lane < LANES) hit(lane);
         }
